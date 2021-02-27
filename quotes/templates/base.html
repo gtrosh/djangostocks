@@ -25,6 +25,9 @@
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'add_stock' %}">Add Stock</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'delete_stock' %}">Delete Stock</a>
+              </li>
 
             </ul>
             <form action="{% url 'home' %}" class="d-flex" method="POST">
@@ -38,6 +41,18 @@
 
         <div class="container">
             <br/>
+
+            {% if messages %}
+              {% for message in messages%}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                  <button class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                  </button>
+                  {{ message }}
+                </div><br/>
+              {% endfor %}  
+
+            {% endif %}
+
             {% block content %}
 
             {% endblock %}
